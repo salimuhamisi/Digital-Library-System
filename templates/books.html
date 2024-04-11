@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>books</title>
+
+    <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+
+  
+  <link href="{% static 'assets/css/style.css'%}" rel="stylesheet">
+   <!-- tostify library -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    #sidebarWrapper {
+      position: fixed;
+      top: 70px; /* Adjusted top position */
+      left: 0;
+      height: 100vh;
+      width: 250px;
+      background-color: #f8f9fa;
+      padding-top: 30px;
+    }
+
+    #contentWrapper {
+      margin-left: 240px; /* Width of your left sidebar + some margin */
+      padding: 70px 20px 20px 0; /* Top, Right, Bottom, Left */
+    }
+
+    .material-category {
+        color: #343a40; /* Dark color of your choice */
+    }
+    .material-category:hover {
+        color: inherit; /* Set the color to inherit, or use any other color you prefer */
+        text-decoration: none; /* Remove underline on hover */
+    }
+
+    #AddBookForm {
+        background-color: #87CEEB;
+        padding: 20px;
+        border-radius: 10px;
+        width: 390px;
+        height: 540px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none; /* Set the form to be initially hidden */
+        z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    .table-striped.table-sm th,
+    .table-striped.table-sm td {
+        border: 1px solid #dee2e6; /* Add vertical borders */
+        border-collapse: separate; /* Separate border */
+        border-spacing: 0; /* No spacing between borders */
+    }
+
+    /* Navigation bar container */
+    .navbar {
+        display: flex;
+        justify-content: space-between; /* Items are spaced evenly */
+        align-items: center; /* Align items vertically */
+    }
+
+    /* User info container */
+    .user-info {
+        display: flex;
+        align-items: center; /* Align items vertically */
+    }
+
+    /* Adjust margin and padding as needed */
+    .user-info img {
+        width: 40px; /* Adjust size of the account icon */
+        height: 40px;
+        margin-left: 20px; /* Add space between icon and username */
+    }
+
+    .user-info .username {
+        margin-left: 20px; /* Add space between username and other navigation items */
+        
+
+    }
+    .table th,
+    .table td {
+        border-right: 1px solid #dee2e6; /* Vertical border */
+    }
+    .table thead th {
+        background-color: #343a40; /* Dark background color */
+        color: white; /* White text color */
+    }
+
+  </style>
+</head>
+<body>
+
+    <div id="contentWrapper" class="col-md-10">
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Category</th>
+                        <th>Name & Description</th>
+                        <th>No. of Books</th>
+                        <th>Book Type</th>
+                        <th>Actions</th>  
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in entries %}
+                    <tr>
+                        <td>{{ entry.book_category }}</td>
+                        <td>
+                            <strong>{{ entry.book_name }}</strong><br>
+                            <em>{{ entry.description }}</em>
+                        </td>
+                        <td>{{ entry.number_of_books }}</td>
+                        <td>{{ entry.book_type }}</td>
+                        <td><a href="#">Delete</a></td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    
+</body>
+</html>

@@ -1,0 +1,107 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+    <title>contact</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+  
+    <!-- Favicons -->
+    
+    <link href="{% static 'assets/img/favicon.png'%}" rel="icon">
+    <link href="{% static 'assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/animate.css/animate.min.css'%}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/aos/aos.css'%}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+  
+  
+    <link href="{% static 'assets/css/style.css'%}" rel="stylesheet">
+
+    <style>
+        .contact-form{
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 85%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header id="header" class="fixed-top navbar-light bg-light custom-navbar">
+        <div class="container d-flex align-items-center justify-content-between">
+    
+          <a href="index.html" class="logo"><img src="{% static 'assets/img/logo1.png' %}" alt="" class="img-fluid"></a>
+    
+          
+    
+        </div>
+    </header>
+
+    <div class="container mt-4">
+
+        <!-- Embedded Google Map -->
+        <div class="mt-4">
+            <h2>Our Location</h2>
+            <iframe
+              width="100%"
+              height="300"
+              frameborder="0" style="border:0"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.805149868025!2d36.822718773727516!3d-1.2912535356289714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10df5a23385d%3A0x15238033c2bcdc3b!2sTechnical%20University%20Of%20Kenya!5e0!3m2!1sen!2ske!4v1711889086870!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen>
+            </iframe>
+        </div>
+        <div class="contact-form">
+          <h2>Contact Us</h2>
+          <form method='post'>
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" name="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" name="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+              <label for="message">Message:</label>
+              <textarea class="form-control" name="message" rows="4" placeholder="Enter your message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      
+        
+    </div>
+
+    
+    <!-- ... (your other scripts) ... -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

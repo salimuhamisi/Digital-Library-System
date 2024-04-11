@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>sborrowed</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+
+
+  <link href="{% static 'assets/css/style.css'%}" rel="stylesheet">
+  
+
+   <!-- tostify library -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Bootstrap JavaScript (Popper.js and Bootstrap JS) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+  <style>
+    /* Navigation bar container */
+    .navbar {
+        display: flex;
+        justify-content: space-between; /* Items are spaced evenly */
+        align-items: center; /* Align items vertically */
+    }
+
+    /* User info container */
+    .user-info {
+        display: flex;
+        align-items: center; /* Align items vertically */
+    }
+
+    /* Adjust margin and padding as needed */
+    .user-info img {
+        width: 40px; /* Adjust size of the account icon */
+        height: 40px;
+        margin-left: 20px; /* Add space between icon and username */
+    }
+
+    .user-info .username {
+        margin-left: 20px; /* Add space between username and other navigation items */
+        
+    }
+    .content-container {
+        margin-top: 200px; /* Adjust this value as needed */
+    }
+  </style>
+
+</head>
+
+    <body>
+        <!-- Top Navigation Bar -->
+        <header id="header" class="fixed-top bg-light">
+            <div class="container d-flex align-items-center justify-content-between">
+        
+            <a href="index.html" class="logo"><img src="{% static 'assets/img/logo1.png'%}" alt="" class="img-fluid"></a>
+    
+            
+    
+    
+    
+            <nav class="navbar">
+                
+            
+                <!-- User info container -->
+                <div class="user-info">
+                    <img src="{% static 'assets/images/profile.png' %}" alt="Account Icon">
+                    <span>{{ user.username }}</span>
+                    
+                </div>
+            </nav>
+            </div>
+        </header>
+    
+        <!-- Main Content -->
+        <div class="container-fluid mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-10 mt-5">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Book Name</th>
+                                    <th>Borrowing Date</th>
+                                    <th>Returnin Date</th>
+                                    <th>Status</th>
+                                    <th>Fines</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for entry in entries %}
+                                <tr>
+                                    <td>{{ entry.book }}</td>
+                                    <td>{{ entry.borrowing_date }}</td>
+                                    <td>{{ entry.returning_date }}</td>
+                                    <td>
+                                        {% if entry.is_borrowed %}
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-danger btn-sm return-book-btn disabled" data-bs-toggle="modal" data-bs-target="#exampleModal" data-borrowing-id="{{ entry.id }}">
+                                                Not Returned
+                                            </button>
+                                        {% else %}
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-success btn-sm return-book-btn disabled" data-bs-toggle="modal" data-bs-target="#exampleModal" data-borrowing-id="{{ entry.id }}" style="width: 98px;">
+                                            Returned
+                                        </button>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ entry.fine}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+</body>
+</html>

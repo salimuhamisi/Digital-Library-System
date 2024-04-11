@@ -1,0 +1,54 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Category</th>
+                <th>Name & Description</th>
+                <th>No. of Books</th>
+                <th>Book Type</th>
+                
+                <th>Actions</th>
+                 
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                <td>{{ entry.book_category }}</td>
+                <td>
+                    <strong>{{ entry.book_name }}</strong><br>
+                    <em>{{ entry.description }}</em>
+                </td>
+                <td>{{ entry.number_of_books }}</td>
+                <td>{{ entry.book_type }}</td>
+                
+                <td>
+                    <form action="{% url 'delete_book' entry.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<!-- notifications.html -->
+
+<div class="container-fluid mt-5"> <!-- Adjusted margin-top class -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            {% for notification in notifications %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    {{ notification.message|safe }}
+                    
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
